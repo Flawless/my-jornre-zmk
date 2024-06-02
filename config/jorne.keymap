@@ -17,7 +17,7 @@
     combos {
         compatible = "zmk,combos";
 
-        raise {
+        combo_raise {
             bindings = <&mo 2>;
             key-positions = <40 41>;
         };
