@@ -55,7 +55,7 @@
             bindings = <
 &trans  &kp UNDER       &kp AMPERSAND  &kp PERCENT  &kp UP_ARROW    &kp CARET   &kp PIPE     &kp LEFT_BRACKET      &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp MINUS  &kp PG_UP      &mt RGUI F12
         &mt LCTRL PLUS  &kp AT         &kp LEFT     &kp DOWN_ARROW  &kp RIGHT   &kp HASH     &kp LEFT_PARENTHESIS  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp PLUS   &trans
-        &mt LALT EQUAL  &kp STAR       &kp UNDER    &kp EXCL        &kp DOLLAR  &kp SLASH    &kp LEFT_BRACE        &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &trans     &kp PAGE_DOWN
+        &mt LALT EQUAL  &kp STAR       &kp UNDER    &kp EXCL        &kp DOLLAR  &kp SLASH    &kp LEFT_BRACE        &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp EQUAL  &kp PAGE_DOWN
                                                     &trans          &trans      &trans       &mo 2                 &kp DELETE       &kp KP_NUMBER_0
             >;
         };
