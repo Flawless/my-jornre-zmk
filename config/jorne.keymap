@@ -14,7 +14,21 @@
 #define ADJ 3
 
 / {
-    combos { compatible = "zmk,combos"; };
+    combos {
+        compatible = "zmk,combos";
+
+        bootloader-left {
+            bindings = <&bootloader>;
+            key-positions = <39 4 16 18>;
+            layers = <0>;
+        };
+
+        bootloader-right {
+            bindings = <&bootloader>;
+            key-positions = <21 9 23 42>;
+            layers = <0>;
+        };
+    };
 
     behaviors {
         raise_space: raise_space {
