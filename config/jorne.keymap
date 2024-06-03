@@ -17,15 +17,27 @@
     combos {
         compatible = "zmk,combos";
 
-        bootloader-left {
+        bootloader_left {
             bindings = <&bootloader>;
             key-positions = <39 4 16 18>;
             layers = <0>;
         };
 
-        bootloader-right {
+        bootloader_right {
             bindings = <&bootloader>;
             key-positions = <21 9 23 42>;
+            layers = <0>;
+        };
+
+        reset_left {
+            bindings = <&sys_reset>;
+            key-positions = <39 16 18>;
+            layers = <0>;
+        };
+
+        reset_right {
+            bindings = <&sys_reset>;
+            key-positions = <21 23 42>;
             layers = <0>;
         };
     };
