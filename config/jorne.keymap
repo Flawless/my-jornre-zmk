@@ -5,101 +5,194 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
 
-#define DEF 0
-#define LWR 1
-#define RSE 2
-#define ADJ 3
+// 1. Layer Definitions
+#define BASE 0
+#define LOWER 1
+#define RAISE 2
+#define ADJUST 3
 
+//set mod-morph timing
+&lt {
+    quick_tap_ms = ;
+};
+
+&mt {
+    quick_tap_ms = ;
+};
+
+// 2. Macros
 / {
-    combos {
-        compatible = "zmk,combos";
-
-        bootloader_left {
-            bindings = <&bootloader>;
-            key-positions = <39 4 16 18>;
-            layers = <0>;
+    macros {
+        lng_sw: lng_sw {
+            label = "LNG_SW";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = ;
+            bindings = <&macro_press>, <&kp LGUI>, <&kp SPACE>, <&macro_release>, <&kp LGUI>;
         };
 
-        bootloader_right {
-            bindings = <&bootloader>;
-            key-positions = <21 9 23 42>;
-            layers = <0>;
+        ruble: ruble {
+            label = "RUBLE";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = ;
+            bindings = <&macro_press>, <&kp RALT>, <&kp N8>, <&macro_release>, <&kp RALT>;
         };
 
-        reset_left {
-            bindings = <&sys_reset>;
-            key-positions = <39 16 18>;
-            layers = <0>;
+        cprght: cprght {
+            label = "CPRGHT";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = ;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>, <&kp KP_N0 &kp KP_N1 &kp KP_N6 &kp KP_N9>,
+                <&macro_release>,
+                <&kp LALT>
+                ;
         };
 
-        reset_right {
-            bindings = <&sys_reset>;
-            key-positions = <21 23 42>;
-            layers = <0>;
+        degree: degree {
+            label = "DEGREE";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = ;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>, <&kp KP_N0 &kp KP_N1 &kp KP_N7 &kp KP_N6>,
+                <&macro_release>,
+                <&kp LALT>
+                ;
+        };
+
+        grtsgn: grtsgn {
+            label = "GRTSGN";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = ;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>, <&kp KP_N6 &kp KP_N2>,
+                <&macro_release>,
+                <&kp LALT>
+                ;
+        };
+
+        plsmins: plsmins {
+            label = "PLSMNS";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = ;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>, <&kp KP_N0 &kp KP_N1 &kp KP_N7 &kp KP_N7>,
+                <&macro_release>,
+                <&kp LALT>
+                ;
+        };
+
+        scrcut: scrcut {
+            label = "SCRCUT";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = ;
+            bindings = <&macro_press>, <&kp LGUI>, <&kp LSHFT>, <&kp S>, <&macro_release>, <&kp LGUI>, <&kp LSHFT>;
         };
     };
+	
+	behaviors {
+                mm_rbkt: mod_morph_rbkt {
+                    compatible = "zmk,behavior-mod-morph";
+                    label = "MOD_MORPH_RBKT";
+                    #binding-cells = ;
+                    bindings = <&kp RBRC>, <&kp LGUI>;
+                    mods = <(MOD_LGUI)>;
+                };
+                mm_grv: mod_morph_grv {
+                    compatible = "zmk,behavior-mod-morph";
+                    label = "MOD_MORPH_GRV";
+                    #binding-cells = ;
+                    bindings = <&kp GRAVE>, <&kp LCTRL>;
+                    mods = <(MOD_LCTL)>;
+                };
+                mm_bsls: mod_morph_bsls {
+                    compatible = "zmk,behavior-mod-morph";
+                    label = "MOD_MORPH_BSLS";
+                    #binding-cells = ;
+                    bindings = <&kp BSLH>, <&kp LALT>;
+                    mods = <(MOD_LALT)>;
+                };
+                mm_lbkt: mod_morph_lbkt {
+                    compatible = "zmk,behavior-mod-morph";
+                    label = "MOD_MORPH_LBKT";
+                    #binding-cells = ;
+                    bindings = <&kp LBRC>, <&kp RGUI>;
+                    mods = <(MOD_RGUI)>;
+                };
+                mm_quo: mod_morph_quo {
+                    compatible = "zmk,behavior-mod-morph";
+                    label = "MOD_MORPH_QUO";
+                    #binding-cells = ;
+                    bindings = <&kp QUOT>, <&kp RCTRL>;
+                    mods = <(MOD_RCTL)>;
+                };
+                mm_min: mod_morph_min {
+                    compatible = "zmk,behavior-mod-morph";
+                    label = "MOD_MORPH_MIN";
+                    #binding-cells = ;
+                    bindings = <&kp MINUS>, <&kp RALT>;
+                    mods = <(MOD_RALT)>;
+                };
 
-    behaviors {
-        raise_space: raise_space {
-            compatible = "zmk,behavior-mod-morph";
-            label = "RAISE_SPACE";
-            bindings = <&lt 1 SPACE>, <&mo 2>;
+				mm_spc: mod_morph_spc {
+                    compatible = "zmk,behavior-mod-morph";
+                    label = "MOD_MORPH_SPC";
+                    #binding-cells = ;
+                    bindings = <&kp SPACE>, <&kp LSHFT>;
+                    mods = <(MOD_LSFT)>;
+                };
 
-            #binding-cells = <0>;
-            mods = <(MOD_RSFT)>;
-        };
-    };
+				mm_bsp: mod_morph_bsp {
+                    compatible = "zmk,behavior-mod-morph";
+                    label = "MOD_MORPH_BSP";
+                    #binding-cells = ;
+                    bindings = <&kp BSPC>, <&kp RSHFT>;
+                    mods = <(MOD_RSFT)>;
+                };
 
+				mm_eql: mod_morph_eql {
+                    compatible = "zmk,behavior-mod-morph";
+                    label = "MOD_MORPH_EQL";
+                    #binding-cells = ;
+                    bindings = <&kp EQUAL>, <&kp LALT>;
+                    mods = <(MOD_LALT)>;
+                };
+    };
+
+// 3. Keymap
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  GUI |   ~  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  [   | GUI/] |
-            //        | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |CTRL/'|
-            //        | LALT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | RALT |
-            //                           | RSE | SPC | LWR |   | LWR | BKSP | RSE |
-
             bindings = <
-&kp BACKSLASH  &kp GRAVE      &kp Q  &kp W  &kp E                    &kp R              &kp T           &kp Y                  &kp U               &kp I          &kp O    &kp P     &kp LEFT_BRACKET     &kp RIGHT_BRACKET
-               &kp LEFT_META  &kp A  &kp S  &kp D                    &kp F              &kp G           &kp H                  &kp J               &kp K          &kp L    &kp SEMI  &mt RIGHT_SHIFT SQT
-               &kp LCTRL      &kp Z  &kp X  &kp C                    &kp V              &kp B           &kp N                  &kp M               &kp COMMA      &kp DOT  &kp FSLH  &kp RIGHT_ALT
-                                            &mt LEFT_CONTROL ESCAPE  &mt LEFT_META TAB  &raise_space    &mt RIGHT_SHIFT ENTER  &mt RIGHT_META TAB  &kp BACKSPACE
+&kp LGUI   &mm_rbkt   &kp Q           &kp W     &kp E     &kp R          &kp T     &kp Y &kp U &kp I     &kp O   &kp P    &mm_lbkt
+&mm_grv   &kp A           &kp S     &kp D     &kp F          &kp G     &kp H &kp J &kp K     &kp L   &kp SEMI &mm_quo
+&mm_bsls   &kp Z           &kp X     &kp C     &kp V          &kp B     &kp N &kp M &kp COMMA &kp DOT &kp FSLH &mm_min
+&lt 2 TAB       &mm_spc &lt 1 RET &lt 1 ESC &mm_bsp &lt 2 DEL
             >;
         };
 
         lower_layer {
-            // -----------------------------------------------------------------------------------------
-            // |     |  _  |  F1 |  F2 |  F3 |  F4 |  F5 |   |  F6 |  F7 |  F8 |  F9 | F10 | F11 | F12 |
-            //       |  +  |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |  -  |
-            //       |  =  |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |     |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
-
             bindings = <
-&trans  &kp UNDER       &kp AMPERSAND  &kp PERCENT  &kp UP_ARROW    &kp CARET   &kp PIPE     &kp LEFT_BRACKET      &kp N7  &kp N8   &kp N9  &kp MINUS  &kp PG_UP      &mt RGUI F12
-        &mt LCTRL PLUS  &kp AT         &kp LEFT     &kp DOWN_ARROW  &kp RIGHT   &kp HASH     &kp LEFT_PARENTHESIS  &kp N4  &kp N5   &kp N6  &kp PLUS   &trans
-        &mt LALT EQUAL  &kp STAR       &kp UNDER    &kp EXCL        &kp DOLLAR  &kp SLASH    &kp LEFT_BRACE        &kp N1  &kp N2   &kp N3  &kp EQUAL  &kp PAGE_DOWN
-                                                    &trans          &trans      &trans       &mo 2                 &kp N0  &kp DEL
+&kp LGUI    &kp LGUI   &kp F1      &kp F2     &kp F3     &kp F4     &kp CAPS    &kp EXCL &kp AT   &kp HASH   &kp DLR   &kp PERCENT &kp RGUI   &kp RGUI
+&kp LCTRL   &kp F5      &kp F6      &kp F7     &kp F8     &kp APP     &kp CARET   &kp AMPS &kp ASTR &kp LPAR  &kp RPAR  &kp RCTRL
+&kp LALT    &kp F9      &kp F10     &kp F11    &kp F12    &lng_sw  &ruble  &cprght &degree &grtsgn  &plsmins &kp RALT
+&lt 3 TAB   &trans      &trans      &trans     &trans     &lt 3 DEL
             >;
         };
 
         raise_layer {
-            // -----------------------------------------------------------------------------------------
-            // |     | NMLK |  /  |  7  |  8  |  9  |  -  |   | VOLU| HOME| PRSC| PGUP| SCLK| CLCK|     |
-            //       | CTRL |  *  |  4  |  5  |  6  |  +  |   | MUT | LEFT|  UP | RGHT| INS | APP |
-            //       |      |  0  |  1  |  2  |  3  |  .  |   | VOLD| END | DOWN| PGDN| PAUS|     |
-            //                          |     |     | ADJ |   | ADJ |     |     |
-
             bindings = <
-&bt BT_CLR_ALL  &trans        &kp C_VOLUME_UP    &kp C_BRIGHTNESS_INC  &trans  &trans  &trans    &kp RIGHT_BRACKET      &kp F7  &kp F8  &kp F9  &kp F12  &trans           &trans
-                &out OUT_TOG  &trans             &trans                &trans  &trans  &trans    &kp RIGHT_PARENTHESIS  &kp F4  &kp F5  &kp F6  &kp F11  &kp PRINTSCREEN
-                &trans        &kp C_VOLUME_DOWN  &kp C_BRIGHTNESS_DEC  &trans  &trans  &trans    &kp RIGHT_BRACE        &kp F1  &kp F2  &kp F3  &kp F10  &trans
-                                                                       &trans  &trans  &trans    &trans                 &trans  &trans
-            >;
-        };
-    };
-};
+ &kp LGUI &kp LGUI &kp KP_AST &kp KP_N7   &kp KP_N8  &kp KP_N9  &kp KP_PLUS &kp WH_U  &kp HOME   &kp MPLY  &kp PG_UP &kp VOLU  &kp RGUI &kp RGUI
+ &kp LCTL &kp KP_SLASH &kp KP_N4   &kp KP_N5  &kp KP_N6  &kp MINUS  &kp LEFT  &kp DOWN 
