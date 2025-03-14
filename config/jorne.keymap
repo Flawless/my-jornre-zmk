@@ -77,8 +77,8 @@
 
         lower_layer {
             bindings = <
-&kp LWIN  &kp F1     &kp F2   &kp F3   &kp F4   &kp F5   &kp CAPS         &msc SCRL_UP    &kp HOME        &kp C_PP         &kp PG_UP      &kp C_VOLUME_UP  &kp UNDER  &kp RWIN
-          &kp LCTRL  &kp F6   &kp F7   &kp F8   &kp F9   &kp C_MENU       &mkp LCLK       &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_UP   &mmv MOVE_RIGHT  &kp RCTRL
+&kp LWIN  &kp F1     &kp F2   &kp F3   &kp F4   &kp F5   &mkp RCLK        &msc SCRL_UP    &kp HOME        &kp C_PP         &kp PG_UP      &kp C_VOLUME_UP  &kp UNDER  &kp RWIN
+          &kp LCTRL  &kp F6   &kp F7   &kp F8   &kp F9   &mkp LCLK        &mkp LCLK       &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_UP   &mmv MOVE_RIGHT  &kp RCTRL
           &kp LALT   &kp F10  &kp F11  &kp F12  &kp F13  &kp LC(SPACE)    &msc SCRL_DOWN  &kp END         &kp PRINTSCREEN  &kp PAGE_DOWN  &kp C_VOL_DN     &kp RALT
                                        &trans   &trans   &lt 3 RETURN     &lt 3 ESC       &trans          &trans
             >;
