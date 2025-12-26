@@ -14,12 +14,23 @@
 #define LWR 1
 #define RSE 2
 #define ADJ 3
+#define CMK 4
 
 &lt { quick_tap_ms = <220>; };
 
 &mt { quick_tap_ms = <220>; };
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        colemak_toggle {
+            bindings = <&tog CMK>;
+            key-positions = <0 13 14>;
+            layers = <0 4>;
+        };
+    };
+
     macros {
         numdot: numdot {
             label = "ZM_numdot";
@@ -90,6 +101,18 @@
        &bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &bt BT_CLR
        &soft_off    &kp KP_NUM    &none         &none         &none         &out OUT_TOG    &out OUT_TOG  &none         &none         &none         &none         &soft_off
                                                 &trans        &none         &trans          &trans        &none         &trans
+            >;
+        };
+
+        colemak_dh_layer {
+            // Colemak-DH layout for devices without custom layout support
+            // Toggle with: LWIN + RBKT + LCTRL (positions 0, 13, 14)
+
+            bindings = <
+&kp LWIN  &kp GRAVE  &kp Q  &kp W  &kp F      &kp P            &kp B        &kp J      &kp L           &kp U      &kp Y    &kp SEMI  &kp LBKT       &mt RWIN RBKT
+          &kp LCTRL  &kp A  &kp R  &kp S      &kp T            &kp G        &kp M      &kp N           &kp E      &kp I    &kp O     &mt RCTRL SQT
+          &kp LALT   &kp Z  &kp X  &kp C      &kp D            &kp V        &kp K      &kp H           &kp COMMA  &kp DOT  &kp FSLH  &mt RALT BSLH
+                                   &lt 2 TAB  &mt LSHFT SPACE  &lt 1 RET    &lt 1 ESC  &mt RSHFT BSPC  &lt 2 DEL
             >;
         };
     };
