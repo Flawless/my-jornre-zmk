@@ -11,10 +11,10 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define DEF 0
-#define LWR 1
-#define RSE 2
-#define ADJ 3
-#define CMK 4
+#define CMK 1
+#define LWR 2
+#define RSE 3
+#define ADJ 4
 
 &lt { quick_tap_ms = <220>; };
 
@@ -28,7 +28,7 @@
             bindings = <&tog CMK>;
             key-positions = <0 1 14>;  // LWIN + GRAVE + LCTRL (all left side)
             timeout-ms = <50>;
-            layers = <0 4>;
+            layers = <0 1>;
         };
     };
 
@@ -74,34 +74,7 @@
 &kp LWIN  &kp GRAVE  &kp Q  &kp W  &kp E      &kp R            &kp T        &kp Y      &kp U           &kp I      &kp O    &kp P     &kp LBKT       &mt RWIN RBKT
           &kp LCTRL  &kp A  &kp S  &kp D      &kp F            &kp G        &kp H      &kp J           &kp K      &kp L    &kp SEMI  &mt RCTRL SQT
           &kp LALT   &kp Z  &kp X  &kp C      &kp V            &kp B        &kp N      &kp M           &kp COMMA  &kp DOT  &kp FSLH  &mt RALT BSLH
-                                   &lt 2 TAB  &mt LSHFT SPACE  &lt 1 RET    &lt 1 ESC  &mt RSHFT BSPC  &lt 2 DEL
-            >;
-        };
-
-        raise_layer {
-            bindings = <
-&kp LWIN  &trans          &kp ASTERISK  &kp N7        &kp NUMBER_8  &kp NUMBER_9  &kp PLUS    &kp EXCLAMATION  &kp AT          &kp HASH      &kp DOLLAR            &kp PERCENT            &kp UNDERSCORE  &kp RWIN
-          &kp LCTRL       &kp SLASH     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp MINUS     &kp LEFT_ARROW   &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW       &mkp RCLK              &kp RCTRL
-          &mt LALT EQUAL  &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp DOT       &kp CARET        &kp AMPS        &kp ASTRK     &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RALT
-                                                      &mo 3         &trans        &trans        &trans           &trans          &mo 3
-            >;
-        };
-
-        lower_layer {
-            bindings = <
-&kp LWIN  &kp F1     &kp F2   &kp F3   &kp F4   &kp F5   &mkp RCLK        &msc SCRL_UP    &kp HOME        &kp C_PP         &kp PG_UP        &kp C_VOLUME_UP  &kp C_BRIGHTNESS_INC  &kp RWIN
-          &kp LCTRL  &kp F6   &kp F7   &kp F8   &kp F9   &mkp LCLK        &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP     &mmv MOVE_RIGHT  &mkp LCLK        &kp RCTRL
-          &kp LALT   &kp F10  &kp F11  &kp F12  &kp F13  &kp LC(SPACE)    &msc SCRL_DOWN  &kp END         &kp PRINTSCREEN  &kp PAGE_DOWN    &kp C_VOL_DN     &kp C_BRIGHTNESS_DEC
-                                       &mo 3    &trans   &lt 3 RETURN     &lt 3 ESC       &trans          &mo 3
-            >;
-        };
-
-        adjust_layer {
-            bindings = <
-&none  &bootloader  &none         &none         &none         &none         &none           &none         &none         &none         &none         &none         &bootloader  &none
-       &bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &bt BT_CLR
-       &soft_off    &kp KP_NUM    &none         &none         &none         &out OUT_TOG    &out OUT_TOG  &none         &none         &none         &none         &soft_off
-                                                &trans        &none         &trans          &trans        &none         &trans
+                                   &lt 3 TAB  &mt LSHFT SPACE  &lt 2 RET    &lt 2 ESC  &mt RSHFT BSPC  &lt 3 DEL
             >;
         };
 
@@ -113,7 +86,34 @@
 &kp LWIN  &kp GRAVE  &kp Q  &kp W  &kp F      &kp P            &kp B        &kp J      &kp L           &kp U      &kp Y    &kp SEMI  &kp LBKT       &mt RWIN RBKT
           &kp LCTRL  &kp A  &kp R  &kp S      &kp T            &kp G        &kp M      &kp N           &kp E      &kp I    &kp O     &mt RCTRL SQT
           &kp LALT   &kp Z  &kp X  &kp C      &kp D            &kp V        &kp K      &kp H           &kp COMMA  &kp DOT  &kp FSLH  &mt RALT BSLH
-                                   &lt 2 TAB  &mt LSHFT SPACE  &lt 1 RET    &lt 1 ESC  &mt RSHFT BSPC  &lt 2 DEL
+                                   &lt 3 TAB  &mt LSHFT SPACE  &lt 2 RET    &lt 2 ESC  &mt RSHFT BSPC  &lt 3 DEL
+            >;
+        };
+
+        raise_layer {
+            bindings = <
+&kp LWIN  &trans          &kp ASTERISK  &kp N7        &kp NUMBER_8  &kp NUMBER_9  &kp PLUS    &kp EXCLAMATION  &kp AT          &kp HASH      &kp DOLLAR            &kp PERCENT            &kp UNDERSCORE  &kp RWIN
+          &kp LCTRL       &kp SLASH     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp MINUS     &kp LEFT_ARROW   &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW       &mkp RCLK              &kp RCTRL
+          &mt LALT EQUAL  &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp DOT       &kp CARET        &kp AMPS        &kp ASTRK     &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RALT
+                                                      &mo 4         &trans        &trans        &trans           &trans          &mo 4
+            >;
+        };
+
+        lower_layer {
+            bindings = <
+&kp LWIN  &kp F1     &kp F2   &kp F3   &kp F4   &kp F5   &mkp RCLK        &msc SCRL_UP    &kp HOME        &kp C_PP         &kp PG_UP        &kp C_VOLUME_UP  &kp C_BRIGHTNESS_INC  &kp RWIN
+          &kp LCTRL  &kp F6   &kp F7   &kp F8   &kp F9   &mkp LCLK        &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP     &mmv MOVE_RIGHT  &mkp LCLK        &kp RCTRL
+          &kp LALT   &kp F10  &kp F11  &kp F12  &kp F13  &kp LC(SPACE)    &msc SCRL_DOWN  &kp END         &kp PRINTSCREEN  &kp PAGE_DOWN    &kp C_VOL_DN     &kp C_BRIGHTNESS_DEC
+                                       &mo 4    &trans   &lt 4 RETURN     &lt 4 ESC       &trans          &mo 4
+            >;
+        };
+
+        adjust_layer {
+            bindings = <
+&none  &bootloader  &none         &none         &none         &none         &none           &none         &none         &none         &none         &none         &bootloader  &none
+       &bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &bt BT_CLR
+       &soft_off    &kp KP_NUM    &none         &none         &none         &out OUT_TOG    &out OUT_TOG  &none         &none         &none         &none         &soft_off
+                                                &trans        &none         &trans          &trans        &none         &trans
             >;
         };
     };
