@@ -26,7 +26,8 @@
 
         colemak_toggle {
             bindings = <&tog CMK>;
-            key-positions = <0 13 14>;
+            key-positions = <0 1 14>;  // LWIN + GRAVE + LCTRL (all left side)
+            timeout-ms = <50>;
             layers = <0 4>;
         };
     };
@@ -106,7 +107,7 @@
 
         colemak_dh_layer {
             // Colemak-DH layout for devices without custom layout support
-            // Toggle with: LWIN + RBKT + LCTRL (positions 0, 13, 14)
+            // Toggle with: LWIN + GRAVE + LCTRL (positions 0, 1, 14)
 
             bindings = <
 &kp LWIN  &kp GRAVE  &kp Q  &kp W  &kp F      &kp P            &kp B        &kp J      &kp L           &kp U      &kp Y    &kp SEMI  &kp LBKT       &mt RWIN RBKT
