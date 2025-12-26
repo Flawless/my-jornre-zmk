@@ -18,9 +18,9 @@
 #
 ---
 include:
-  - board: nrfmicro_13
+  - board: nrfmicro/nrf52840
     shield: jorne_left
-  - board: nrfmicro_13
+  - board: nrfmicro/nrf52840
     shield: jorne_right
-  - board: nrfmicro_13
+  - board: nrfmicro/nrf52840
     shield: settings_reset
